@@ -1,0 +1,14 @@
+.bp-logo {
+  width: 60px;
+  height: 60px;
+  margin: 17px 0px 0px 19px;
+}
+
+.flex {
+  display: flex;
+}
+
+.headline{
+  margin-top: 50px;
+  margin-left: 20px;
+}

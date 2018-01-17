@@ -1,0 +1,20 @@
+
+.edit-card-container {
+	margin:0px 0px 80px 0px;
+	-webkit-column-count: 1;
+	-webkit-column-gap: 0;
+	-moz-column-count: 1;
+	-moz-column-gap: 0;
+	column-count: 1;
+	column-gap: 0;
+}
+
+.edit-card  {
+  margin: 5px;
+  width: 250px;
+
+	display: inline-block;
+	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	column-break-inside: avoid;
+}

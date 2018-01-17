@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html {
+  background-color: #fafafa;
+}
+body {
+  margin: 0;
+}
+
+.header-wrap {
+  background:#fafafa;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  height: 100px;
+  border-bottom: 1px solid #cfd8dc;
+}
+
+.content-wrap {
+  padding-top: 130px;
+  padding-left: 15px;
+}
+
+.pre-footer{
+  height: 100px;
+}
+
+.footer-wrap {
+  bottom: 0pt;
+  left: 0pt;
+ background-color: #fafafa;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  height: 50px;
+  border-top: 1px solid #cfd8dc;
+}
