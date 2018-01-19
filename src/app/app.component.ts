@@ -10,9 +10,5 @@ import * as fromRoot from './reducers';
 export class AppComponent {
   title = 'app';
   constructor(private store: Store<fromRoot.State>) {
-
-    store.select(it => it.routerReducer).forEach(it => console.log(it))
-
-    console.log(store);
   }
 }

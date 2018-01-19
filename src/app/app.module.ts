@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 
 import { reducers, metaReducers } from './reducers';
 import { CustomRouterStateSerializer } from './shared/utils';
-import { ServiceCallExistsGuard } from './guards/service-call-exists.guard';
+import { EnsureItemGuard } from './guards/ensure-item.guard';
 
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { EditComponent } from './features/edit/edit.component';
@@ -22,7 +22,7 @@ import { ServiceCallContainerComponent } from './features/service-call-container
 
 const appRoutes: Routes = [
   { path: '', component: NotFoundComponent },
-  { path: 'edit/:id', component: ServiceCallContainerComponent, canActivate: [ServiceCallExistsGuard] },
+  { path: 'edit/:id', component: ServiceCallContainerComponent, canActivate: [EnsureItemGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -56,7 +56,7 @@ const appRoutes: Routes = [
 
   ],
   providers: [
-    ServiceCallExistsGuard,
+    EnsureItemGuard,
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }
   ],
   bootstrap: [AppComponent]

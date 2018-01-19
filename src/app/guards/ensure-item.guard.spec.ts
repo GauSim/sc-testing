@@ -1,15 +1,15 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { ServiceCallExistsGuard } from './service-call-exists.guard';
+import { EnsureItemGuard } from './ensure-item.guard';
 
 describe('ServiceCallExistsGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ServiceCallExistsGuard]
+      providers: [EnsureItemGuard]
     });
   });
 
-  it('should ...', inject([ServiceCallExistsGuard], (guard: ServiceCallExistsGuard) => {
+  it('should ...', inject([EnsureItemGuard], (guard: EnsureItemGuard) => {
     expect(guard).toBeTruthy();
   }));
 });
