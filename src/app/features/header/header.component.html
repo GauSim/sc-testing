@@ -1,0 +1,14 @@
+<div class="flex">
+  <div>
+    <mat-card class="bp-logo">Logo</mat-card>
+  </div>
+  <div>
+    <h2 class="headline">
+      {{ (title$ | async)}}
+    </h2>
+    <nav>
+      <a routerLink="/edit/1" routerLinkActive="active">Overview</a>
+      <a routerLink="/other" routerLinkActive="active">other</a>
+    </nav>
+  </div>
+</div>
