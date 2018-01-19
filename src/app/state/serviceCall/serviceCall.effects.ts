@@ -3,26 +3,21 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { ServiceCallActionTypes, LoadSuccess, Load } from '../actions/serviceCall';
+import { ServiceCallActionTypes, LoadSuccess, Load } from './serviceCall.actions';
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/filter';
-
 
 
 @Injectable()
-export class CollectionEffects {
+export class ServiceCallEffects {
   constructor(
     private actions$: Actions
   ) { }
 
-  @Effect() login$ = this.actions$
+  @Effect() loadServiceCall$ = this.actions$
     .ofType(ServiceCallActionTypes.Load)
     .delay(1000)
     .switchMap((it: Load) => {
-      // delay here
+      console.log('serviceCall loaded ...')
       return of(
         new LoadSuccess({ id: it.payload, title: 'mocked sc title with id->' + it.payload })
       )

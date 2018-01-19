@@ -3,7 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angul
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { State } from '../reducers';
-import { Load } from '../actions/serviceCall';
+import { Load } from '../state/serviceCall/serviceCall.actions';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../reducers';
-import { Load } from '../../actions/serviceCall';
+import { Load } from '../../state/serviceCall/serviceCall.actions';
 
 
 @Component({

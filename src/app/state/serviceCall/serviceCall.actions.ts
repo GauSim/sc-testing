@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { IServiceCall } from '../model/IServiceCall';
+import { IServiceCall } from '../../model/IServiceCall';
 
 export enum ServiceCallActionTypes {
   Load = '[ServiceCall] Load',
@@ -7,7 +7,7 @@ export enum ServiceCallActionTypes {
   Select = '[ServiceCall] Select'
 }
 
-export type ServiceCallAction = Load | LoadSuccess | Select;
+export type ServiceCallActions = Load | LoadSuccess | Select;
 
 export class Load implements Action {
   readonly type = ServiceCallActionTypes.Load;

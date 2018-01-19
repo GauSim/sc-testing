@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from './reducers';
+import { ContextLoaded } from './state/authContext/authContext.actions';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,8 @@ import * as fromRoot from './reducers';
 export class AppComponent {
   title = 'app';
   constructor(private store: Store<fromRoot.State>) {
+
+
+
   }
 }

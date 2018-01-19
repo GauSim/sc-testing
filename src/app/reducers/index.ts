@@ -25,6 +25,8 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 import { serviceCallReducer } from '../state/serviceCall/serviceCall.reducer'
 import { serviceCallState } from '../state/serviceCall/serviceCall.state'
+import { authContextReducer } from '../state/authContext/authContext.reducer';
+import { authContextState } from '../state/authContext/authContext.state';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -32,6 +34,7 @@ import { serviceCallState } from '../state/serviceCall/serviceCall.state'
  */
 export interface State {
   serviceCall: serviceCallState;
+  authContext: authContextState;
   routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
@@ -42,6 +45,7 @@ export interface State {
  */
 export const reducers: ActionReducerMap<State> = {
   serviceCall: serviceCallReducer,
+  authContext: authContextReducer,
   routerReducer: fromRouter.routerReducer,
 };
 
