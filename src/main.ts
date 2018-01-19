@@ -8,6 +8,10 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+(window as any).bootstrapApp = (authContext: any) => {
+
+  return platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch(err => console.log(err));
+
+}

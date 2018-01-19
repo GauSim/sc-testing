@@ -1,0 +1,78 @@
+<h1>outer app, for example wfm</h1>
+<style>
+  iframe {
+    border: 4px solid red;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+  }
+</style>
+
+<script>
+
+  const MESSAGE_TYPES = {
+    CHILD_READY: 'CHILD_READY',
+    PARENT_AUTH: 'HOST_AUTH',
+    CHILD_DONE: 'CHILD_DONE',
+    ERROR: 'ERROR'
+  };
+
+  function initializeFrame(options) {
+
+
+    const FRAME_ID = 'theIframe';
+    const iframe = document.createElement('iframe');
+    iframe.id = FRAME_ID;
+    iframe.src = options.url;
+    iframe.onload = () => { };
+
+    document.body.appendChild(iframe);
+
+    const emit = e => {
+      console.log('posting', e)
+      const { origin } = new URL(options.url);
+      iframe.contentWindow.postMessage(e, origin);
+    }
+
+    const onMessage = event => {
+      console.log('resiving', event.data);
+
+      // add URL whiteList here
+      // var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
+
+      switch (event.data) {
+        case MESSAGE_TYPES.CHILD_READY:
+          emit(MESSAGE_TYPES.PARENT_AUTH);
+          break;
+        case MESSAGE_TYPES.CHILD_DONE:
+          // inner modal is now running
+          break;
+        default:
+          break;
+      }
+
+    }
+
+    window.addEventListener('message', onMessage);
+
+    return () => {
+      // cleanup
+      const it = document.getElementById(`#${FRAME_ID}`);
+      if (it) {
+        it.parentNode.removeChild(it);
+      }
+
+      document.removeEventListener('message', onMessage);
+    }
+  }
+
+
+  const runTest = () => initializeFrame({ url: `http://localhost:4200/edit/1` })
+
+
+</script>
+
+
+<button onclick="runTest()">
+  test modal...
+</button>

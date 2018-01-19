@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Servicecall</title>
@@ -8,7 +9,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
   <app-root></app-root>
 </body>
+
+<script>
+  const ORIGIN = 'http://192.168.2.123:8080'
+
+  const MESSAGE_TYPES = {
+    CHILD_READY: 'CHILD_READY',
+    PARENT_AUTH: 'HOST_AUTH',
+    CHILD_DONE: 'CHILD_DONE',
+    ERROR: 'ERROR'
+  };
+
+  const emit = e => {
+    console.log('posting', e)
+    parent.postMessage(e, ORIGIN)
+  };
+
+  emit(MESSAGE_TYPES.CHILD_READY);
+
+  const onMessage = event => {
+    console.log('resiving', event.data)
+
+    // add URL whiteList here
+    // var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
+
+    switch (event.data) {
+      case MESSAGE_TYPES.PARENT_AUTH:
+
+        // pass auth info here
+        window.bootstrapApp().then(() => {
+          emit(MESSAGE_TYPES.CHILD_DONE);
+        })
+
+        break;
+      default:
+        break;
+    }
+
+
+  }
+  window.addEventListener('message', onMessage, false);
+
+</script>
+
 </html>
