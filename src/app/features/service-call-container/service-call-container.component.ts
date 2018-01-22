@@ -1,7 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { State } from '../../reducers';
 import { Observable } from 'rxjs/Observable';
@@ -27,13 +24,8 @@ export class ServiceCallContainerComponent implements OnDestroy, OnInit {
 
   isLoading$: Observable<boolean> | undefined;
 
-  constructor(
-    private route: ActivatedRoute,
-    private store: Store<State>
-  ) {
-
-    this.isLoading$ = store.select(it => it.serviceCall.isLoading).pipe();
-
+  constructor(private store: Store<State>) {
+    this.isLoading$ = this.store.select(it => it.serviceCall.isLoading).pipe();
   }
 
   ngOnInit() {

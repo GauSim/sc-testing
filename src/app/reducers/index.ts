@@ -1,7 +1,5 @@
 import {
   ActionReducerMap,
-  createSelector,
-  createFeatureSelector,
   ActionReducer,
   MetaReducer,
 } from '@ngrx/store';
@@ -14,7 +12,7 @@ import * as fromRouter from '@ngrx/router-store';
  * exception will be thrown. This is useful during development mode to
  * ensure that none of the reducers accidentally mutates the state.
  */
-import { storeFreeze } from 'ngrx-store-freeze';
+// import { storeFreeze } from 'ngrx-store-freeze';
 
 /**
  * Every reducer module's default export is the reducer function itself. In
@@ -27,12 +25,15 @@ import { serviceCallReducer } from '../state/serviceCall/serviceCall.reducer'
 import { serviceCallState } from '../state/serviceCall/serviceCall.state'
 import { authContextReducer } from '../state/authContext/authContext.reducer';
 import { authContextState } from '../state/authContext/authContext.state';
+import { fragmentState } from '../state/fragment/fragment.state';
+import { fragmentReducer } from '../state/fragment/fragment.reducer';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
+  fragment: fragmentState;
   serviceCall: serviceCallState;
   authContext: authContextState;
   routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
@@ -43,7 +44,11 @@ export interface State {
  * These reducer functions are called with each dispatched action
  * and the current or initial state and return a new immutable state.
  */
+
+
+
 export const reducers: ActionReducerMap<State> = {
+  fragment: fragmentReducer,
   serviceCall: serviceCallReducer,
   authContext: authContextReducer,
   routerReducer: fromRouter.routerReducer,

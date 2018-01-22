@@ -17,10 +17,8 @@ export class EditComponent implements OnInit {
   serviceCall$: Observable<IServiceCall | undefined> | undefined = undefined;
   cards: any[] = Array(15).fill(Array(50).fill('card content').join(' '))
 
-  constructor(
-    private store: Store<State>
-  ) {
-    this.serviceCall$ = store.select(it => it.serviceCall.dto).pipe();
+  constructor(private store: Store<State>) {
+    this.serviceCall$ = this.store.select(it => it.serviceCall.dto).pipe();
   }
 
 

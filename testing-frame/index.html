@@ -44,7 +44,7 @@
 
       switch (event.data.type) {
         case EVENTS.READY:
-          emit(EVENTS.DATA, 'demo-token');
+          emit(EVENTS.DATA, 'external-token-from-outer-iframe');
           break;
         case EVENTS.DONE:
           // inner modal is now running
@@ -69,7 +69,7 @@
   }
 
   let cleanup;
-  const runTest = () => cleanup = initializeFrame({ url: `http://localhost:4200/edit/1` })
+  const runTest = () => cleanup = initializeFrame({ url: `http://localhost:4200/fragment/edit/1` })
   const removeTest = () => cleanup();
 
 </script>

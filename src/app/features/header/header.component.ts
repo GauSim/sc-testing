@@ -13,10 +13,8 @@ export class HeaderComponent implements OnInit {
 
   title$: Observable<string>;
 
-  constructor(
-    private store: Store<State>
-  ) {
-    this.title$ = store.select(it => it.serviceCall).map(it => !it.dto || it.isLoading ? '...' : it.dto.title).pipe();
+  constructor(private store: Store<State>) {
+    this.title$ = this.store.select(it => it.serviceCall).map(it => !it.dto || it.isLoading ? '...' : it.dto.title).pipe();
   }
 
   ngOnInit() {

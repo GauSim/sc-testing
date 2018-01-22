@@ -1,4 +1,3 @@
-import { Action } from '@ngrx/store';
 import { serviceCallState } from './serviceCall.state';
 import { ServiceCallActionTypes, ServiceCallActions } from './serviceCall.actions';
 import { IServiceCall } from '../../model/IServiceCall';
@@ -8,7 +7,7 @@ export const configDefaultState: serviceCallState = {
   dto: undefined
 };
 
-export const serviceCallReducer = (state = configDefaultState, { type, payload }: ServiceCallActions): serviceCallState => {
+export function serviceCallReducer(state = configDefaultState, { type, payload }: ServiceCallActions): serviceCallState {
 
   switch (type) {
     case ServiceCallActionTypes.Load:

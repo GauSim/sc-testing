@@ -5,7 +5,9 @@
     "baseUrl": "./",
     "module": "es2015",
     "types": [],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true
   },
   "exclude": [
     "test.ts",
