@@ -5,7 +5,8 @@ import { IAuthContext } from '../../model/IAuthContext';
 
 export enum authContextActionTypes {
   AwaitingContextLoaded = '[authContext] AwaitingContextLoaded',
-  ContextLoaded = '[authContext] ContextLoaded'
+  ContextLoaded = '[authContext] ContextLoaded',
+  RequireExternalAuthentication = '[authContext] RequireExternalAuthentication'
 }
 
 export type authContextActions = AwaitingContextLoaded | ContextLoaded;
@@ -25,3 +26,8 @@ export class ContextLoaded implements Action {
 }
 
 
+export class RequireExternalAuthentication implements Action {
+  readonly type = authContextActionTypes.RequireExternalAuthentication
+
+  constructor(public payload: ActivatedRouteSnapshot) { }
+}

@@ -11,49 +11,9 @@
 </head>
 
 <body>
-  <app-root></app-root>
+  <app-root>
+   booting app...
+  </app-root>
 </body>
-
-<script>
-  const ORIGIN = 'http://192.168.2.123:8080'
-
-  const MESSAGE_TYPES = {
-    CHILD_READY: 'CHILD_READY',
-    PARENT_AUTH: 'HOST_AUTH',
-    CHILD_DONE: 'CHILD_DONE',
-    ERROR: 'ERROR'
-  };
-
-  const emit = e => {
-    console.log('posting', e)
-    parent.postMessage(e, ORIGIN)
-  };
-
-  emit(MESSAGE_TYPES.CHILD_READY);
-
-  const onMessage = event => {
-    console.log('resiving', event.data)
-
-    // add URL whiteList here
-    // var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
-
-    switch (event.data) {
-      case MESSAGE_TYPES.PARENT_AUTH:
-
-        // pass auth info here
-        window.bootstrapApp().then(() => {
-          emit(MESSAGE_TYPES.CHILD_DONE);
-        })
-
-        break;
-      default:
-        break;
-    }
-
-
-  }
-  window.addEventListener('message', onMessage, false);
-
-</script>
 
 </html>

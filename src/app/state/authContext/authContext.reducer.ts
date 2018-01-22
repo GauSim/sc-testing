@@ -10,6 +10,7 @@ export const authContextReducer = (state = configDefaultState, { type, payload }
 
   switch (type) {
     case authContextActionTypes.ContextLoaded:
+      console.log('CTX set ...')
       return Object.assign({}, state, payload)
     default:
       return state;

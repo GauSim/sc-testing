@@ -10,10 +10,11 @@
 
 <script>
 
-  const MESSAGE_TYPES = {
-    CHILD_READY: 'CHILD_READY',
-    PARENT_AUTH: 'HOST_AUTH',
-    CHILD_DONE: 'CHILD_DONE',
+
+  const EVENTS = {
+    READY: 'READY',
+    DATA: 'DATA',
+    DONE: 'DONE',
     ERROR: 'ERROR'
   };
 
@@ -30,10 +31,9 @@
 
     document.body.appendChild(iframe);
 
-    const emit = e => {
-      console.log('posting', e)
+    const emit = (type, value) => {
       const { origin } = new URL(options.url);
-      iframe.contentWindow.postMessage(e, origin);
+      iframe.contentWindow.postMessage({ type, value }, origin);
     }
 
     const onMessage = event => {
@@ -42,11 +42,11 @@
       // add URL whiteList here
       // var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
 
-      switch (event.data) {
-        case MESSAGE_TYPES.CHILD_READY:
-          emit(MESSAGE_TYPES.PARENT_AUTH);
+      switch (event.data.type) {
+        case EVENTS.READY:
+          emit(EVENTS.DATA, 'demo-token');
           break;
-        case MESSAGE_TYPES.CHILD_DONE:
+        case EVENTS.DONE:
           // inner modal is now running
           break;
         default:
@@ -59,7 +59,7 @@
 
     return () => {
       // cleanup
-      const it = document.getElementById(`#${FRAME_ID}`);
+      const it = document.querySelector(`#${FRAME_ID}`);
       if (it) {
         it.parentNode.removeChild(it);
       }
@@ -68,13 +68,18 @@
     }
   }
 
-
-  const runTest = () => initializeFrame({ url: `http://localhost:4200/edit/1` })
-
+  let cleanup;
+  const runTest = () => cleanup = initializeFrame({ url: `http://localhost:4200/edit/1` })
+  const removeTest = () => cleanup();
 
 </script>
 
 
-<button onclick="runTest()">
-  test modal...
-</button>
+<div>
+  <button onclick="runTest()">
+    open
+  </button>
+  <button onclick="cleanup()">
+    close
+  </button>
+</div>

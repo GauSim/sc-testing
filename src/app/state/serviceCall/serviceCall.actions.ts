@@ -4,10 +4,11 @@ import { IServiceCall } from '../../model/IServiceCall';
 export enum ServiceCallActionTypes {
   Load = '[ServiceCall] Load',
   LoadSuccess = '[ServiceCall] LoadSuccess',
-  Select = '[ServiceCall] Select'
+  SelectById = '[ServiceCall] SelectById',
+  SelectByIdSuccess = '[ServiceCall] SelectByIdSuccess'
 }
 
-export type ServiceCallActions = Load | LoadSuccess | Select;
+export type ServiceCallActions = Load  |  LoadSuccess
 
 export class Load implements Action {
   readonly type = ServiceCallActionTypes.Load;
@@ -19,11 +20,5 @@ export class LoadSuccess implements Action {
   readonly type = ServiceCallActionTypes.LoadSuccess
 
   constructor(public payload: IServiceCall) { }
-}
-
-export class Select implements Action {
-  readonly type = ServiceCallActionTypes.Select;
-
-  constructor(public payload: string) { }
 }
 

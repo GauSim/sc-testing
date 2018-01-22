@@ -13,7 +13,8 @@ export class EnsureItemGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    this.store.dispatch(new Load(route.params['id']))
+    const id: string = route.params['id'];
+    this.store.dispatch(new Load(id))
     return true;
   }
 }
