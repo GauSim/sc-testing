@@ -1,13 +1,4 @@
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/last';
-import 'rxjs/add/operator/withLatestFrom';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/takeWhile';
-import 'rxjs/add/operator/switchMap';
-
+import './utilities/rxjs-imports';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,9 +6,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { MaterialModule } from './utilities/material.module';
+
 
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
-import { MatButtonModule, MatCardModule, MatGridListModule, MatProgressSpinnerModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -34,7 +26,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './containers/not-found/not-found.container';
-import { ServiceCallComponent } from './containers/service-call/service-call.container'
+import { ServiceCallContainer } from './containers/service-call/service-call.container'
 import { appRoutes } from './state/router/routes';
 import { CustomRouterStateSerializer } from './state/router/CustomRouterStateSerializer';
 import { AuthContextIframeService } from './state/authContext/AuthContextIframeService';
@@ -49,7 +41,7 @@ import { AuthContextIframeService } from './state/authContext/AuthContextIframeS
     HeaderComponent,
     FooterComponent,
     NotFoundComponent,
-    ServiceCallComponent
+    ServiceCallContainer
   ],
   imports: [
     RouterModule.forRoot(
@@ -57,19 +49,19 @@ import { AuthContextIframeService } from './state/authContext/AuthContextIframeS
       // { enableTracing: true }  <-- debugging purposes only
     ),
     StoreModule.forRoot(reducers, { metaReducers }),
+
     EffectsModule.forRoot([
       ServiceCallEffects,
       AuthContextEffects
     ]),
+
+    MaterialModule.forRoot(),
+
     BrowserModule,
+
     BrowserAnimationsModule,
 
     StoreRouterConnectingModule,
-
-    MatButtonModule,
-    MatCardModule,
-    MatGridListModule,
-    MatProgressSpinnerModule
 
   ],
   providers: [

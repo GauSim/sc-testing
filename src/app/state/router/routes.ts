@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { EnsureAuthContextGuard } from './guards/ensure-auth-context.guard';
 import { EnsureItemGuard } from './guards/ensure-item.guard';
 import { NotFoundComponent } from '../../containers/not-found/not-found.container';
-import { ServiceCallComponent } from '../../containers/service-call/service-call.container';
+import { ServiceCallContainer } from '../../containers/service-call/service-call.container';
 
 const appRoutes: Routes = [
   {
@@ -11,12 +11,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'edit/:id',
-    component: ServiceCallComponent,
+    component: ServiceCallContainer,
     canActivate: [EnsureAuthContextGuard, EnsureItemGuard]
   },
   {
     path: 'fragment/edit/:id',
-    component: ServiceCallComponent,
+    component: ServiceCallContainer,
     canActivate: [EnsureAuthContextGuard, EnsureItemGuard]
   },
   {

@@ -10,7 +10,7 @@ import { IServiceCall } from '../../state/serviceCall/IServiceCall';
   selector: 'app-service-call-container',
   templateUrl: './service-call.container.html',
 })
-export class ServiceCallComponent implements OnDestroy, OnInit {
+export class ServiceCallContainer implements OnDestroy, OnInit {
 
   isLoading$: Observable<boolean> | undefined;
   serviceCall$: Observable<IServiceCall | undefined> | undefined = undefined;
