@@ -7,3 +7,4 @@ import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/takeWhile';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/merge';

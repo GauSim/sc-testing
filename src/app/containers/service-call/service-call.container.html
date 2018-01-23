@@ -9,5 +9,5 @@
   <app-edit [serviceCall]="serviceCall$ | async"></app-edit>
 
 </div>
-
-<app-footer class="footer-wrap"></app-footer>
+<app-footer class="footer-wrap" [canSave]="canSave$ | async" (saveButton)="onSave($event)" (cancelButton)="onCancel($event)">
+</app-footer>

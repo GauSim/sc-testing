@@ -29,7 +29,10 @@ export class ServiceCallEffects {
 
             console.log(`used token [${t.authToken}] serviceCall loaded ...`, action.payload)
             // http here
-            op.next(new LoadServiceCallSuccess({ id: action.payload, subject: 'mocked sc subject with id->' + action.payload }));
+
+            setTimeout(() => {
+              op.next(new LoadServiceCallSuccess({ id: action.payload, subject: 'mocked sc subject with id->' + action.payload }));
+            }, 3000)
 
           })
           .catch(e => op.error(e))

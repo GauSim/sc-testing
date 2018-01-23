@@ -1,7 +1,7 @@
-<button mat-button class="footer-action-button" (click)="load(1)">
-  load state 1
+<button mat-button class="footer-action-button" (click)="saveButton.emit()" [disabled]="!canSave">
+  saveButton
 </button>
 
-<button mat-button class="footer-action-button" (click)="load(2)">
-  loade state 2
+<button mat-button class="footer-action-button" (click)="cancelButton.emit()">
+  cancelButton
 </button>

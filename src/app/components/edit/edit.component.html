@@ -1,9 +1,14 @@
 <div class="edit-card-container">
+
   <div>
-    <mat-card class="edit-card" *ngFor="let card of cards">
-      <mat-card-content>
-        <p> ID ===>>> {{ serviceCall.id }} </p>
-        <p> {{ card }}</p>
-      </mat-card-content>
-    </mat-card>
+    {{ serviceCall?.subject }}
   </div>
+
+  <mat-card class="edit-card" *ngFor="let card of cards">
+    <mat-card-content>
+      <p> ID ===>>> {{ serviceCall?.id }} </p>
+      <p> {{ card }}</p>
+    </mat-card-content>
+  </mat-card>
+
+</div>
