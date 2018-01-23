@@ -7,7 +7,9 @@
     "types": [],
     "strictNullChecks": true,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "allowUnreachableCode": false,
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": [
     "test.ts",

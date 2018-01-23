@@ -14,8 +14,8 @@ import { LoadServiceCall } from '../../state/serviceCall/serviceCall.actions';
 export class ServiceCallContainer implements OnDestroy, OnInit {
 
 
-  canSave$: Observable<boolean>;
-  isLoading$: Observable<boolean> | undefined;
+  canSave$: Observable<boolean> | undefined = undefined;
+  isLoading$: Observable<boolean> | undefined = undefined;
   serviceCall$: Observable<IServiceCall | undefined> | undefined = undefined;
 
   constructor(private store: Store<State>) {
@@ -29,7 +29,7 @@ export class ServiceCallContainer implements OnDestroy, OnInit {
 
     this.canSave$ = new Observable<boolean>((op) => op.next(false))
       .merge(this.isLoading$.map(it => !it));
-       // todo merge isFormValid$ from the form into canSave$
+    // todo merge isFormValid$ from the form into canSave$
 
   }
 

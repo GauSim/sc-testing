@@ -61,7 +61,7 @@ import { AuthContextIframeService } from './state/authContext/AuthContextIframeS
 
     BrowserAnimationsModule,
 
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule.forRoot(),
 
   ],
   providers: [
