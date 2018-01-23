@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { authContextActionTypes, ContextLoaded, AwaitingContextLoaded, RequireExternalAuthentication, RequireInternAuthentication } from './authContext.actions';
 import { of } from 'rxjs/observable/of';
-import { IframeMessagingService } from '../../shared/iframeMessagingService';
+import { AuthContextIframeService } from './AuthContextIframeService';
 
 @Injectable()
 export class AuthContextEffects {
   constructor(
     private actions$: Actions,
-    private iframeMessagingService: IframeMessagingService
+    private authContextIframeService: AuthContextIframeService
   ) { }
 
   @Effect() determainAuthFlow$ = this.actions$
@@ -25,6 +25,7 @@ export class AuthContextEffects {
   @Effect() internalAuthFlow$ = this.actions$
     .ofType(authContextActionTypes.RequireInternAuthentication)
     .switchMap(() => {
+      // => login-dialog
       return of(new ContextLoaded({ authToken: 'internal-token' }))
     })
 
@@ -32,7 +33,7 @@ export class AuthContextEffects {
     .ofType(authContextActionTypes.RequireExternalAuthentication)
     .switchMap(() => {
       // in dev diffrent, on prod same doamin
-      return this.iframeMessagingService.getAuthContextFromIframe('http://127.0.0.1:8080')
+      return this.authContextIframeService.getAuthContextFromIframe('http://127.0.0.1:8080')
         .map(authContext => new ContextLoaded(authContext))
     })
 

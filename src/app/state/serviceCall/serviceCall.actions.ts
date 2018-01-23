@@ -1,23 +1,21 @@
 import { Action } from '@ngrx/store';
-import { IServiceCall } from '../../model/IServiceCall';
+import { IServiceCall } from './IServiceCall';
 
 export enum ServiceCallActionTypes {
-  Load = '[ServiceCall] Load',
-  LoadSuccess = '[ServiceCall] LoadSuccess',
-  SelectById = '[ServiceCall] SelectById',
-  SelectByIdSuccess = '[ServiceCall] SelectByIdSuccess'
+  LoadServiceCall = '[ServiceCall] LoadServiceCall',
+  LoadServiceCallSuccess = '[ServiceCall] LoadServiceCallSuccess'
 }
 
-export type ServiceCallActions = Load  |  LoadSuccess
+export type ServiceCallActions = LoadServiceCall  |  LoadServiceCallSuccess
 
-export class Load implements Action {
-  readonly type = ServiceCallActionTypes.Load;
+export class LoadServiceCall implements Action {
+  readonly type = ServiceCallActionTypes.LoadServiceCall;
 
   constructor(public payload: string) { }
 }
 
-export class LoadSuccess implements Action {
-  readonly type = ServiceCallActionTypes.LoadSuccess
+export class LoadServiceCallSuccess implements Action {
+  readonly type = ServiceCallActionTypes.LoadServiceCallSuccess
 
   constructor(public payload: IServiceCall) { }
 }

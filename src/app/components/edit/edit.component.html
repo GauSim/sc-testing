@@ -1,5 +1,5 @@
 <div class="edit-card-container">
-  <div *ngIf="serviceCall$ | async as serviceCall">
+  <div>
     <mat-card class="edit-card" *ngFor="let card of cards">
       <mat-card-content>
         <p> ID ===>>> {{ serviceCall.id }} </p>

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { State } from '../reducers/index';
-import { AwaitingContextLoaded } from '../state/authContext/authContext.actions';
+import { State } from '../../index';
+import { AwaitingContextLoaded } from '../../authContext/authContext.actions';
 
 @Injectable()
 export class EnsureAuthContextGuard implements CanActivate {

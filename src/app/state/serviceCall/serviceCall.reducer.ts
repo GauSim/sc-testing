@@ -1,6 +1,6 @@
 import { serviceCallState } from './serviceCall.state';
 import { ServiceCallActionTypes, ServiceCallActions } from './serviceCall.actions';
-import { IServiceCall } from '../../model/IServiceCall';
+import { IServiceCall } from './IServiceCall';
 
 export const configDefaultState: serviceCallState = {
   isLoading: false,
@@ -10,9 +10,9 @@ export const configDefaultState: serviceCallState = {
 export function serviceCallReducer(state = configDefaultState, { type, payload }: ServiceCallActions): serviceCallState {
 
   switch (type) {
-    case ServiceCallActionTypes.Load:
+    case ServiceCallActionTypes.LoadServiceCall:
       return { ...state, isLoading: true }
-    case ServiceCallActionTypes.LoadSuccess:
+    case ServiceCallActionTypes.LoadServiceCallSuccess:
       return { ...state, isLoading: false, dto: payload as IServiceCall };
     default:
       return state;

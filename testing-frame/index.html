@@ -32,7 +32,7 @@
     document.body.appendChild(iframe);
 
     const emit = (type, value) => {
-      const { origin } = new URL(options.url);
+      const { origin } = new URL(options.url); // SC App
       iframe.contentWindow.postMessage({ type, value }, origin);
     }
 
@@ -41,6 +41,7 @@
 
       // add URL whiteList here
       // var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
+      // whitelist check SC App
 
       switch (event.data.type) {
         case EVENTS.READY:

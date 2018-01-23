@@ -1,0 +1,13 @@
+<app-header class="header-wrap" [serviceCall]="serviceCall$ | async"></app-header>
+
+<div class="content-wrap">
+
+  <div *ngIf="isLoading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <app-edit [serviceCall]="serviceCall$ | async"></app-edit>
+
+</div>
+
+<app-footer class="footer-wrap"></app-footer>

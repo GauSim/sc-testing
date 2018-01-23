@@ -4,8 +4,6 @@ import {
   MetaReducer,
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { RouterStateUrl } from '../shared/utils';
-import * as fromRouter from '@ngrx/router-store';
 
 /**
  * storeFreeze prevents state from being mutated. When mutation occurs, an
@@ -25,18 +23,17 @@ import { serviceCallReducer } from '../state/serviceCall/serviceCall.reducer'
 import { serviceCallState } from '../state/serviceCall/serviceCall.state'
 import { authContextReducer } from '../state/authContext/authContext.reducer';
 import { authContextState } from '../state/authContext/authContext.state';
-import { fragmentState } from '../state/fragment/fragment.state';
-import { fragmentReducer } from '../state/fragment/fragment.reducer';
+import { routerReducer } from '../state/router/router.reducer';
+import { routerState } from '../state/router/router.state';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
-  fragment: fragmentState;
   serviceCall: serviceCallState;
   authContext: authContextState;
-  routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
+  routerReducer: routerState;
 }
 
 /**
@@ -48,10 +45,9 @@ export interface State {
 
 
 export const reducers: ActionReducerMap<State> = {
-  fragment: fragmentReducer,
   serviceCall: serviceCallReducer,
   authContext: authContextReducer,
-  routerReducer: fromRouter.routerReducer,
+  routerReducer: routerReducer,
 };
 
 // console.log all actions

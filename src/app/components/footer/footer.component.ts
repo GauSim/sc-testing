@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State } from '../../reducers';
-import { Load } from '../../state/serviceCall/serviceCall.actions';
+import { State } from '../../state/index';
+import { LoadServiceCall } from '../../state/serviceCall/serviceCall.actions';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
   }
 
   load(n) {
-    this.store.dispatch(new Load(n.toString()));
+    this.store.dispatch(new LoadServiceCall(n.toString()));
   }
 
   ngOnInit() {

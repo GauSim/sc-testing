@@ -1,4 +1,4 @@
-import { IServiceCall } from "../../model/IServiceCall";
+import { IServiceCall } from './IServiceCall';
 
 export type serviceCallState = {
   isLoading: boolean;

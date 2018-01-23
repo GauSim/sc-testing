@@ -24,3 +24,4 @@ export class CustomRouterStateSerializer
     return { url, queryParams };
   }
 }
+

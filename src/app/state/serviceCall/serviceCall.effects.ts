@@ -2,9 +2,9 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
-import { ServiceCallActionTypes, LoadSuccess, Load } from './serviceCall.actions';
+import { ServiceCallActionTypes, LoadServiceCallSuccess, LoadServiceCall } from './serviceCall.actions';
 import { Store } from '@ngrx/store';
-import { State } from '../../reducers/index';
+import { State } from '../../state/index';
 
 @Injectable()
 export class ServiceCallEffects {
@@ -12,16 +12,12 @@ export class ServiceCallEffects {
     private actions$: Actions,
     private store$: Store<State>
   ) {
-
-
   }
 
 
   @Effect() loadServiceCall$ = this.actions$
-    .ofType(ServiceCallActionTypes.Load)
-
-
-    .switchMap((action: Load) => {
+    .ofType(ServiceCallActionTypes.LoadServiceCall)
+    .switchMap((action: LoadServiceCall) => {
 
       const waitForAuth$ = new Observable((op) => {
         let isDone = false;
@@ -33,7 +29,7 @@ export class ServiceCallEffects {
 
             console.log(`used token [${t.authToken}] serviceCall loaded ...`, action.payload)
             // http here
-            op.next(new LoadSuccess({ id: action.payload, title: 'mocked sc title with id->' + action.payload }));
+            op.next(new LoadServiceCallSuccess({ id: action.payload, subject: 'mocked sc subject with id->' + action.payload }));
 
           })
           .catch(e => op.error(e))

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { ActivatedRouteSnapshot } from '@angular/router';
-import { IAuthContext } from '../../model/IAuthContext';
+import { IAuthContext } from './IAuthContext';
 
 export enum authContextActionTypes {
   AwaitingContextLoaded = '[authContext] AwaitingContextLoaded',

@@ -1,9 +1,15 @@
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Injectable } from '@angular/core';
-import { IAuthContext } from '../model/IAuthContext';
-
+import { IAuthContext } from './IAuthContext';
+/**
+ * 1. HOST opens CLIENT via URL (SC/1)
+ * 2. CLIENT => READY (booted) [ask for ctx]
+ * 3. HOST => send AuthCtx [send ctx]
+ * 4. CLIENT => DONE
+ * 4. CLIENT (load SC#1) DAL
+ */
 @Injectable()
-export class IframeMessagingService {
+export class AuthContextIframeService {
 
   private _parent: Window;
 
@@ -27,10 +33,10 @@ export class IframeMessagingService {
 
   public getAuthContextFromIframe = (origin: string) => {
 
-    this.emit(origin, IframeMessagingService.EVENTS.READY);
+    this.emit(origin, AuthContextIframeService.EVENTS.READY);
 
     return this.messages$
-      .filter(incomming => incomming.type === IframeMessagingService.EVENTS.DATA)
+      .filter(incomming => incomming.type === AuthContextIframeService.EVENTS.DATA)
       .map((it): IAuthContext => {
         return { authToken: it.value as string }
       })

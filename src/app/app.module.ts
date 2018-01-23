@@ -6,6 +6,7 @@ import 'rxjs/add/operator/last';
 import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/takeWhile';
+import 'rxjs/add/operator/switchMap';
 
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,22 +21,23 @@ import { MatButtonModule, MatCardModule, MatGridListModule, MatProgressSpinnerMo
 
 import { AppComponent } from './app.component';
 
-import { reducers, metaReducers } from './reducers';
-import { CustomRouterStateSerializer } from './shared/utils';
+import { reducers, metaReducers } from './state/index';
 
-import { EnsureAuthContextGuard } from './guards/ensure-auth-context.guard';
-import { EnsureItemGuard } from './guards/ensure-item.guard';
+import { EnsureAuthContextGuard } from './state/router/guards/ensure-auth-context.guard';
+import { EnsureItemGuard } from './state/router/guards/ensure-item.guard';
 
 import { ServiceCallEffects } from './state/serviceCall/serviceCall.effects';
 import { AuthContextEffects } from './state/authContext/authContext.effects';
 
-import { NotFoundComponent } from './features/not-found/not-found.component';
-import { EditComponent } from './features/edit/edit.component';
-import { HeaderComponent } from './features/header/header.component';
-import { FooterComponent } from './features/footer/footer.component';
-import { ServiceCallContainerComponent } from './features/service-call-container/service-call-container.component'
-import { appRoutes } from './routing/routes';
-import { IframeMessagingService } from './shared/iframeMessagingService';
+
+import { EditComponent } from './components/edit/edit.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NotFoundComponent } from './containers/not-found/not-found.container';
+import { ServiceCallComponent } from './containers/service-call/service-call.container'
+import { appRoutes } from './state/router/routes';
+import { CustomRouterStateSerializer } from './state/router/CustomRouterStateSerializer';
+import { AuthContextIframeService } from './state/authContext/AuthContextIframeService';
 
 
 
@@ -47,7 +49,7 @@ import { IframeMessagingService } from './shared/iframeMessagingService';
     HeaderComponent,
     FooterComponent,
     NotFoundComponent,
-    ServiceCallContainerComponent
+    ServiceCallComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -73,7 +75,7 @@ import { IframeMessagingService } from './shared/iframeMessagingService';
   providers: [
     EnsureItemGuard,
     EnsureAuthContextGuard,
-    IframeMessagingService,
+    AuthContextIframeService,
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }
   ],
   bootstrap: [AppComponent]
