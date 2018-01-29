@@ -7,6 +7,7 @@
     "start": "ng serve",
     "dev": "npm start -- --open",
     "build": "ng build --prod",
+    "pretest": "npm run lint",
     "test": "ng test",
     "test:ci": "npm test -- --single-run",
     "lint": "ng lint"

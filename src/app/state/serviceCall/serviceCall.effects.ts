@@ -27,12 +27,12 @@ export class ServiceCallEffects {
           .filter(ctx => !!ctx.authToken).take(1).toPromise()
           .then(t => {
 
-            console.log(`used token [${t.authToken}] serviceCall loaded ...`, action.payload)
+            console.log(`used token [${t.authToken}] serviceCall loaded ...`, action.payload);
             // http here
 
             setTimeout(() => {
               op.next(new LoadServiceCallSuccess({ id: action.payload, subject: 'mocked sc subject with id->' + action.payload }));
-            }, 3000)
+            }, 3000);
 
           })
           .catch(e => op.error(e))
@@ -43,5 +43,5 @@ export class ServiceCallEffects {
 
 
       return waitForAuth$;
-    })
+    });
 }

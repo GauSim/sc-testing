@@ -1,4 +1,4 @@
 
-export type authContextState = {
+export interface AuthContextState {
   authToken: string | undefined;
-};
+}

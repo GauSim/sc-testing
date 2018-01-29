@@ -6,7 +6,7 @@ export enum ServiceCallActionTypes {
   LoadServiceCallSuccess = '[ServiceCall] LoadServiceCallSuccess'
 }
 
-export type ServiceCallActions = LoadServiceCall  |  LoadServiceCallSuccess
+export type ServiceCallActions = LoadServiceCall  |  LoadServiceCallSuccess;
 
 export class LoadServiceCall implements Action {
   readonly type = ServiceCallActionTypes.LoadServiceCall;
@@ -15,7 +15,7 @@ export class LoadServiceCall implements Action {
 }
 
 export class LoadServiceCallSuccess implements Action {
-  readonly type = ServiceCallActionTypes.LoadServiceCallSuccess
+  readonly type = ServiceCallActionTypes.LoadServiceCallSuccess;
 
   constructor(public payload: IServiceCall) { }
 }

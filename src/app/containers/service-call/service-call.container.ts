@@ -11,7 +11,7 @@ import { LoadServiceCall } from '../../state/serviceCall/serviceCall.actions';
   selector: 'app-service-call-container',
   templateUrl: './service-call.container.html',
 })
-export class ServiceCallContainer implements OnDestroy, OnInit {
+export class ServiceCallContainerComponent implements OnDestroy, OnInit {
 
 
   canSave$: Observable<boolean> | undefined = undefined;
@@ -34,12 +34,12 @@ export class ServiceCallContainer implements OnDestroy, OnInit {
   }
 
   onSave() {
-    this.store.dispatch(new LoadServiceCall('1'))
+    this.store.dispatch(new LoadServiceCall('1'));
   }
 
 
   onCancel() {
-    this.store.dispatch(new LoadServiceCall('2'))
+    this.store.dispatch(new LoadServiceCall('2'));
   }
 
   ngOnInit() {

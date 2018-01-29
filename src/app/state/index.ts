@@ -19,10 +19,10 @@ import { environment } from '../../environments/environment';
  * notation packages up all of the exports into a single object.
  */
 
-import { serviceCallReducer } from '../state/serviceCall/serviceCall.reducer'
-import { serviceCallState } from '../state/serviceCall/serviceCall.state'
+import { serviceCallReducer } from '../state/serviceCall/serviceCall.reducer';
+import { ServiceCallState } from '../state/serviceCall/serviceCall.state';
 import { authContextReducer } from '../state/authContext/authContext.reducer';
-import { authContextState } from '../state/authContext/authContext.state';
+import { AuthContextState } from '../state/authContext/authContext.state';
 import { routerReducer } from '../state/router/router.reducer';
 import { routerState } from '../state/router/router.state';
 
@@ -31,8 +31,8 @@ import { routerState } from '../state/router/router.state';
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
-  serviceCall: serviceCallState;
-  authContext: authContextState;
+  serviceCall: ServiceCallState;
+  authContext: AuthContextState;
   routerReducer: routerState;
 }
 

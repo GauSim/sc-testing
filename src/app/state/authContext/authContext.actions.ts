@@ -20,25 +20,25 @@ export class AwaitingContextLoaded implements Action {
 }
 
 export class ContextLoaded implements Action {
-  readonly type = authContextActionTypes.ContextLoaded
+  readonly type = authContextActionTypes.ContextLoaded;
 
   constructor(public payload: IAuthContext) {
-    console.log('ContextLoaded')
+    console.log('ContextLoaded');
   }
 }
 
 export class RequireInternAuthentication implements Action {
-  readonly type = authContextActionTypes.RequireInternAuthentication
+  readonly type = authContextActionTypes.RequireInternAuthentication;
 
   constructor(public payload: ActivatedRouteSnapshot) {
-    console.log('RequireInternAuthentication')
+    console.log('RequireInternAuthentication');
   }
 }
 
 export class RequireExternalAuthentication implements Action {
-  readonly type = authContextActionTypes.RequireExternalAuthentication
+  readonly type = authContextActionTypes.RequireExternalAuthentication;
 
   constructor(public payload: ActivatedRouteSnapshot) {
-    console.log('RequireExternalAuthentication')
+    console.log('RequireExternalAuthentication');
   }
 }

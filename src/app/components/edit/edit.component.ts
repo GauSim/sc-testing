@@ -9,7 +9,7 @@ import { IServiceCall } from '../../state/serviceCall/IServiceCall';
 })
 export class EditComponent {
 
-  cards: any[] = Array(15).fill(Array(50).fill('card content').join(' '))
+  cards: any[] = Array(15).fill(Array(50).fill('card content').join(' '));
 
   @Input() serviceCall: IServiceCall;
 

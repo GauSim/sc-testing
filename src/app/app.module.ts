@@ -26,7 +26,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './containers/not-found/not-found.container';
-import { ServiceCallContainer } from './containers/service-call/service-call.container'
+import { ServiceCallContainerComponent } from './containers/service-call/service-call.container';
 import { appRoutes } from './state/router/routes';
 import { CustomRouterStateSerializer } from './state/router/CustomRouterStateSerializer';
 import { AuthContextIframeService } from './state/authContext/AuthContextIframeService';
@@ -41,7 +41,7 @@ import { AuthContextIframeService } from './state/authContext/AuthContextIframeS
     HeaderComponent,
     FooterComponent,
     NotFoundComponent,
-    ServiceCallContainer
+    ServiceCallContainerComponent
   ],
   imports: [
     RouterModule.forRoot(

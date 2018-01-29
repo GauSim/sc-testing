@@ -1,6 +1,6 @@
 import { IServiceCall } from './IServiceCall';
 
-export type serviceCallState = {
+export interface ServiceCallState {
   isLoading: boolean;
   dto: IServiceCall | undefined;
-};
+}
